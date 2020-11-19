@@ -5,10 +5,10 @@ export default class NASAService {
       if(!response.ok) {
         throw Error(response.statusText);
       }
-      // console.log(response.json());
       return response.json();
     } catch(error) {
       return error.message;
     }
   }
 }
+

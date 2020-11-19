@@ -9,6 +9,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
+import {Point} from 'ol/geom';
 
 const map = new Map({
   target: 'map',
@@ -24,20 +25,27 @@ const map = new Map({
   })
 });
 
+var popup = new Overlay({
+  element: element,
+  positioning: 'bottom-center',
+  stopEvent: false,
+  offset: [0, -10],
+});
+
 function getElements(response) {
   if (response.events) {
     let i = randomStorm(response);
     $('.showCoordinates').text(`The coordinates are ${response.events[i].geometry[0].coordinates}`);
     $('.showTitle').text(`${response.events[i].title}`);
-    console.log(map);
     let coordinates = response.events[i].geometry[0].coordinates;
-    // let longitude = response.events[i].geometry[0].coordinates[0];
+    console.log(coordinates);
     // let latitude = response.events[i].geometry[0].coordinates[1];
-    map.values_.view.adjustCenter(coordinates);
-    // map.setView(new View({
-    //   center: [longitude, latitude],
-    //   zoom: 5
-    
+    let point = new Point(coordinates);
+    map.values_.view.values_.center = point;
+    map.setView(new View({
+      center: point,
+      zoom: 5
+    }));
     console.log(map.values_.view.values_.center);
   } else {
     $('.showErrors').text(`There was an error: ${response}`);
