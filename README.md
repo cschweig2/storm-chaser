@@ -9,11 +9,8 @@
 _This application will locate severe storms happening around the world using NASA's EONET._
 
 ## Setup/Installation Requirements
-### View Online
-1. _Open the webpage at https://cschweig2.github.io/storm-chaser._
-2. _Do x, y, and z to navigate application._
 
-### View locally (on computer)
+### View locally
 1. _Open web browser and go to https://github.com/cschweig2/storm-chaser_
 2. _After clicking the green "code" button, you can copy the URL for the repository._
 3. _Open a terminal window, such as Command Prompt or Git Bash._<br>
